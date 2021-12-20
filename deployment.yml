@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpd-deployment-syaiba
+  namespace: httpd-namespace-syaiba
+  labels:
+    app: httpd_app_syaiba
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: httpd_app_syaiba
+  template:
+    metadata:
+      labels:
+        app: httpd_app_syaiba
+    spec:
+      containers:
+        - name: httpd-container-syaiba
+          image: httpd:latest
+          ports:
+            - containerPort: 80
